@@ -3,17 +3,33 @@ pipeline{
         any
     }
     stages{
-        stage('Cleaning any previous images that exist'){
+        stage('Pulling the code'){
+            agent{
+                label "Windows_Node"
+            }
             steps{
-                sh "docker kill $(docker ps -q)"
-                sh "docker rm $(docker ps -a -q)"
+                bat "cd D:\ict\DevOps\jenkins-demo"
+                bat "git init"
+                bat "git pull https://github.com/k-nikola/jenkins-demo.git"
             }
         }
+        }
         stage('Building and starting the image'){
-            steps {
-                sh "docker-compose up --build -d"
+            agent{
+                label "Windows_Node"
             }
-        stage('Pushing the docker image to dockerhub')
+            steps {
+                bat "docker-compose up --build -d"
+            }
+        }
+        stage('Pushing the docker image to dockerhub'){
+            agent{
+                label "Windows_Node"
+            }
+            steps{
+
+            }
+        }
         }
     }
 }

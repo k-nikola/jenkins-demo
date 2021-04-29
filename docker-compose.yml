@@ -6,8 +6,7 @@ services:
         ports:
           - '8080:80'
         volumes:
-          - ${NGINX_DEFAULT_CONF:-./nginx/default.conf}:/etc/nginx/conf.d/default.conf
-          - ${NGINX_LOGS:-./logs/nginx/jenkins}:/var/log/nginx/jenkins
+          . D:\ict\DevOps\jenkins-demo:/usr/local/nginx
         restart: always
             
             
