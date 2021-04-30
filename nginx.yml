@@ -14,9 +14,10 @@ spec:
     spec:
       containers:
       - name: mysite
-        image: t0b9/mysite-nginx
+        image: t0b9/my-site
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
