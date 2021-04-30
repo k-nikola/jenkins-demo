@@ -1,1 +1,1 @@
-# jenkins-demo
+# kubernetes-demo
