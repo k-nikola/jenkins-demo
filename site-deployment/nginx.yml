@@ -17,7 +17,7 @@ spec:
       - name: mysite
         image: t0b9/my-site
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         imagePullPolicy: Always
 ---
 apiVersion: v1
