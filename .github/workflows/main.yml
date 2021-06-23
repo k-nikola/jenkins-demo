@@ -1,8 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-
+#My workflow that builds and pushes docker image
 name: CI
 
-# Controls when the action will run. 
+
 on: 
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -13,7 +12,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -25,6 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
+      # Logs onto Docker using secret credentials
       - name: Docker login
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
@@ -33,8 +32,13 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
 
-      # Runs a set of commands using the runners shell
+      # Builds a docker image
       - name: Docker build static html site
           
         run: |
-          docker build . -t t0b9/my-site
+          docker build . -t t0b9/my-site:latest
+      # Pushing a container image
+      - name: Docker push created image
+          
+        run: |
+          docker push t0b9/my-site:latest
