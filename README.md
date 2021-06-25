@@ -12,5 +12,3 @@ With kubectl apply, we can create/update resources in a cluster from a file. <br
 ![6](https://user-images.githubusercontent.com/81910142/123332429-c6828d80-d540-11eb-9c09-5861feb7b389.PNG)<br>
 Kubectl will then create pods within the cluster. This can be verified with a command such as <b>kubectl get pods</b></br>
 Other resources that are created, such as namespace and services, can also be verified with commands such as <b>kubectl get namespaces</b> and <b>kubectl get services</b><br>
-![8](https://user-images.githubusercontent.com/81910142/123332772-3f81e500-d541-11eb-84d9-a78246e406a2.PNG)<br>
-
