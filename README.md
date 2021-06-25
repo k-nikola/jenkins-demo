@@ -1,9 +1,9 @@
 # kubernetes-demo
 Prerequisites for running this demo: <br>
-To run this kubernetes demo, I've used minikube. <br>
-Minikube can be used to quickly setup a local Kubernetes cluster on Linux/Windows/MacOS. Minikube can be run as a docker container or a VM. <br>
+This kubernetes demo uses minikube to set up a local cluster. <br>
+Minikube can be used to quickly setup a local Kubernetes cluster on Linux/Windows/MacOS. It can be run as a docker container or a VM. <br>
 Minikube installation guide ->  https://minikube.sigs.k8s.io/docs/start/<br>
-After the installation is finished, minikube can be run with a simple command: <br>
+After the installation is completed, minikube can be run with a simple command: <br>
 ![2](https://user-images.githubusercontent.com/81910142/123321286-13f7fe00-d533-11eb-80eb-2fba484ed7cc.PNG)<br>
 Installing minikube should also install kubectl, and connect it to the minikube cluster.<br>
 ![3](https://user-images.githubusercontent.com/81910142/123322618-cda39e80-d534-11eb-909a-76a01802c5de.PNG)<br>
@@ -26,3 +26,4 @@ Verification can be done with the <b>kubectl get ingress</b> command<br>
 ![14](https://user-images.githubusercontent.com/81910142/123426639-f161f580-d5c3-11eb-80a3-43804ff080be.PNG)<br>
 Since the domain provided in the ingress resource file is not valid, one more thing needs to be done, before accessing it through the browser. This domain needs to be mapped in the /etc/hosts file to the IP address listed in the output of the <b>kubectl get ingress</b> command. Once that is done it is possible to access the cluster:<br>
 ![16](https://user-images.githubusercontent.com/81910142/123429131-e197e080-d5c6-11eb-95d3-13e71949e48b.PNG)<br>
+Final part of this demo focuses on automation. Any push to site directory, within this repo, will trigger an automated build through GitHub Actions. A docker image will be created and pushed to DockerHub with the latest tag. The docker image is built from a Dockerfile in this repo. Once the image is in a public DockerHub repo, it will be reachable to all the pods running within the cluster.
